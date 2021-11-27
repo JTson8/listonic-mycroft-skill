@@ -89,6 +89,8 @@ class ListonicSkill(MycroftSkill):
             password = ""
         payload = "username=" + user_name + "&password=" + password + "&client_id=listonicv2&client_secret=fjdfsoj9874jdfhjkh34jkhffdfff"
         r = requests.post(url, data=payload, headers=headers)
+        self.log.info(r.status_code)
+        self.log.info(r)
         if r.status_code == 200:
             self.log.info("login 200")
             output = r.json()
