@@ -65,7 +65,7 @@ class ListonicSkill(MycroftSkill):
 
     def handle_request(self, list_id, item, list_name, second_time=False):
         url = 'https://hl2api.listonic.com/api/lists/' + list_id + '/items'
-        headers = {'Authorization', 'Bearer ' + self.access_token}
+        headers = {'Authorization': 'Bearer ' + self.access_token}
         payload = {'SortOrder': None, 'Name': item, 'ListId': list_id, 'Amount': "", "Unit": ""}
         r = requests.post(url, data=json.dumps(payload), headers=headers)
         if r.status_code == 401:
@@ -81,7 +81,7 @@ class ListonicSkill(MycroftSkill):
 
     def login(self):
         url = 'https://hl2api.listonic.com/api/loginextended?provider=password&autoMerge=1&autoDestruct=1'
-        headers = {'ClientAuthorization', 'Bearer bGlzdG9uaWN2MjpmamRmc29qOTg3NGpkZmhqa2gzNGpraGZmZGZmZg=='}
+        headers = {'ClientAuthorization': 'Bearer bGlzdG9uaWN2MjpmamRmc29qOTg3NGpkZmhqa2gzNGpraGZmZGZmZg=='}
         user_name = self.settings.get('my_username')
         if user_name is None:
             user_name = ""
