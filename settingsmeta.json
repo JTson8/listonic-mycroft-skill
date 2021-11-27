@@ -1,0 +1,64 @@
+{
+    "skillMetadata": {
+        "sections": [
+            {
+                "name": "Account",
+                "fields": [
+                    {
+                        "name": "my_email",
+                        "type": "email",
+                        "label": "Email",
+                        "value": ""
+                    },
+                    {
+                        "name": "my_password",
+                        "type": "password",
+                        "label": "Password",
+                        "value": ""
+                    }
+                ]
+            },
+            {
+                "name": "Lists",
+                "fields": [
+                    {
+                        "name": "list_1_name",
+                        "type": "text",
+                        "label": "List 1 Name",
+                        "value": ""
+                    },
+                    {
+                        "name": "list_1_id",
+                        "type": "text",
+                        "label": "List 1 Id",
+                        "value": ""
+                    },
+                    {
+                        "name": "list_2_name",
+                        "type": "text",
+                        "label": "List 2 Name",
+                        "value": ""
+                    },
+                    {
+                        "name": "list_2_id",
+                        "type": "text",
+                        "label": "List 2 Id",
+                        "value": ""
+                    },
+                    {
+                        "name": "list_3_name",
+                        "type": "text",
+                        "label": "List 3 Name",
+                        "value": ""
+                    },
+                    {
+                        "name": "list_3_id",
+                        "type": "text",
+                        "label": "List 3 Id",
+                        "value": ""
+                    }
+                ]
+            }
+        ]
+    }
+}
