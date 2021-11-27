@@ -65,8 +65,11 @@ class ListonicSkill(MycroftSkill):
     def handle_request(self, list_id, item, list_name, second_time=False):
         url = 'https://hl2api.listonic.com/api/lists/' + list_id + '/items'
         headers = {'Authorization': 'Bearer ' + self.access_token}
+        self.log.info(self.access_token)
+        self.log.info(list_id)
         payload = {'SortOrder': None, 'Name': item, 'ListId': list_id, 'Amount': "", "Unit": ""}
-        r = requests.post(url, data=json.dumps(payload), headers=headers)
+        self.log.info(payload)
+        r = requests.post(url, json=payload, headers=headers)
         if r.status_code == 401:
             if second_time:
                 self.speak_dialog("Authorization failed")
@@ -76,6 +79,7 @@ class ListonicSkill(MycroftSkill):
         elif r.status_code == 201:
             self.speak_dialog("I have added " + item + " to " + list_name)
         else:
+            self.log.info(r.status_code)
             self.speak_dialog("Could not add " + item + " to " + list_name)
 
     def login(self):
