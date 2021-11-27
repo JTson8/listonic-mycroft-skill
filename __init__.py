@@ -17,7 +17,6 @@
 import json
 
 import requests
-from adapt.intent import IntentBuilder
 from mycroft import MycroftSkill, intent_handler
 
 

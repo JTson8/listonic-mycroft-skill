@@ -1,2 +1,2 @@
-(add | can you add | please add, place) {item} (to | in) {list_name}
-(add | can you add | please add, place) {item} (to | in) {list_name} list
+(add | can you add | please add, place) {item} (to the | to | in) {list_name} list
+(add | can you add | please add, place) {item} (to the | to | in) {list_name}
