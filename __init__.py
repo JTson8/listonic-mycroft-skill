@@ -81,25 +81,18 @@ class ListonicSkill(MycroftSkill):
     def login(self):
         url = 'https://hl2api.listonic.com/api/loginextended?provider=password&autoMerge=1&autoDestruct=1'
         headers = {'ClientAuthorization': 'Bearer bGlzdG9uaWN2MjpmamRmc29qOTg3NGpkZmhqa2gzNGpraGZmZGZmZg=='}
-        user_name = self.settings.get('my_username')
+        user_name = self.settings.get('my_email')
         if user_name is None:
             user_name = ""
         password = self.settings.get('my_password')
         if password is None:
             password = ""
         payload = "username=" + user_name + "&password=" + password + "&client_id=listonicv2&client_secret=fjdfsoj9874jdfhjkh34jkhffdfff"
-        self.log.info(payload)
         r = requests.post(url, data=payload, headers=headers)
-        self.log.info(r.status_code)
-        self.log.info(r)
         if r.status_code == 200:
-            self.log.info("login 200")
             output = r.json()
-            self.log.info(output)
             if 'access_token' in output.keys():
-                self.log.info(output["access_token"])
                 self.access_token = output["access_token"]
-        self.log.info("end")
 
 
 def create_skill():
