@@ -90,9 +90,13 @@ class ListonicSkill(MycroftSkill):
         payload = "username=" + user_name + "&password=" + password + "&client_id=listonicv2&client_secret=fjdfsoj9874jdfhjkh34jkhffdfff"
         r = requests.post(url, data=payload, headers=headers)
         if r.status_code == 200:
+            self.log.info("login 200")
             output = r.json()
+            self.log.info(output)
             if 'access_token' in output.keys():
+                self.log.info(output["access_token"])
                 self.access_token = output["access_token"]
+        self.log.info("end")
 
 
 def create_skill():
