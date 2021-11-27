@@ -45,14 +45,17 @@ class ListonicSkill(MycroftSkill):
         the skills.log file."""
         list_id = ""
         list_name = message.data.get('list_name')
-        if list_name == self.settings.get('list_1_name').lower():
+        if self.settings.get('list_1_name') is not None \
+                and list_name == self.settings.get('list_1_name').lower():
             list_id = self.settings.get('list_1_id')
-        elif list_name == self.settings.get('list_2_name').lower():
+        elif self.settings.get('list_2_name') is not None \
+                and list_name == self.settings.get('list_2_name').lower():
             list_id = self.settings.get('list_2_id')
-        elif list_name == self.settings.get('list_3_name').lower():
+        elif self.settings.get('list_3_name') is not None \
+                and list_name == self.settings.get('list_3_name').lower():
             list_id = self.settings.get('list_3_id')
 
-        if list_id == "":
+        if list_id is None or list_id == "":
             self.speak_dialog("no list found by that name")
         else:
             self.handle_request(list_id, message.data.get('item'), list_name)
@@ -80,7 +83,11 @@ class ListonicSkill(MycroftSkill):
         url = 'https://hl2api.listonic.com/api/loginextended?provider=password&autoMerge=1&autoDestruct=1'
         headers = {'ClientAuthorization', 'Bearer bGlzdG9uaWN2MjpmamRmc29qOTg3NGpkZmhqa2gzNGpraGZmZGZmZg=='}
         user_name = self.settings.get('my_username')
+        if user_name is None:
+            user_name = ""
         password = self.settings.get('my_password')
+        if password is None:
+            password = ""
         payload = "username=" + user_name + "&password=" + password + "&client_id=listonicv2&client_secret=fjdfsoj9874jdfhjkh34jkhffdfff"
         r = requests.post(url, data=payload, headers=headers)
         output = r.json()
