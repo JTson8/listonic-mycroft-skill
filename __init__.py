@@ -88,6 +88,7 @@ class ListonicSkill(MycroftSkill):
         if password is None:
             password = ""
         payload = "username=" + user_name + "&password=" + password + "&client_id=listonicv2&client_secret=fjdfsoj9874jdfhjkh34jkhffdfff"
+        self.log.info(payload)
         r = requests.post(url, data=payload, headers=headers)
         self.log.info(r.status_code)
         self.log.info(r)
