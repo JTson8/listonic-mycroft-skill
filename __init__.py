@@ -38,8 +38,7 @@ class ListonicSkill(MycroftSkill):
         settings will be available."""
         self.login()
 
-    @intent_handler(IntentBuilder('ListonicIntent')
-                    .require('ListIntentKeyword'))
+    @intent_handler('Listonic.intent')
     def handle_list_intent(self, message):
         """ Skills can log useful information. These will appear in the CLI and
         the skills.log file."""
