@@ -1,1 +1,1 @@
-(.* )?(add|place|put|insert) (?P<Item>.*) (into|to|in)( the)? (?P<List>[^\s]+)( list)?
+(.* )?(add|place|put|insert) (?<Item>.*) (into|to|in)( the)? (?<List>[^\s]+)( list)?
