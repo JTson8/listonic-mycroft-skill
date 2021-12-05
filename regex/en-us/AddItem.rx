@@ -1,1 +1,1 @@
-(.* )?(add|place|put|insert) (?P<AddItem>.*)( into| to| in)( the)? (.* )
+(.* )?(add|place|put|insert) (?P<AddItem>.*)( into| to| in)(.* )
