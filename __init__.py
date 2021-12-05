@@ -38,7 +38,7 @@ class ListonicSkill(MycroftSkill):
         settings will be available."""
         self.login()
 
-    @intent_handler(IntentBuilder("AddToList").require("AddList"))
+    @intent_handler(IntentBuilder("AddToList").require("AddList").build())
     def handle_list_intent(self, message):
         list_id = ""
         list_name = message.data.get('List')
