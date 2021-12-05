@@ -1,1 +1,1 @@
-(.* )(into|to|in)( the)? (?P<List>[^\s]+)( list)?
+(.* )(into|to|in)( the)? (?P<ListName>[^\s]+)( list)?
