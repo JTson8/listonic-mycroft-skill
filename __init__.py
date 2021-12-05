@@ -38,19 +38,19 @@ class ListonicSkill(MycroftSkill):
         settings will be available."""
         self.login()
 
-    @intent_handler(IntentBuilder("AddToList").require("Add").require("Seperator").optionally("AddItem").optionally("ListName").build())
+    @intent_handler(IntentBuilder("AddToList").require("Add").require("Seperator").require("AddItem").require("ListName").build())
     def handle_list_intent(self, message):
         list_id = ""
         item_name = message.data.get('AddItem')
         list_name = message.data.get('ListName')
         self.log.info(message.utterance_remainder())
 
-        if item_name is None:
-            self.speak_dialog("no item given to add to list")
-            return
-        if list_name is None:
-            self.speak_dialog("no list given to add item")
-            return
+        # if item_name is None:
+        #     self.speak_dialog("no item given to add to list")
+        #     return
+        # if list_name is None:
+        #     self.speak_dialog("no list given to add item")
+        #     return
 
         if self.settings.get('list_1_name') is not None \
                 and list_name == self.settings.get('list_1_name').lower():
