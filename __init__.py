@@ -44,13 +44,7 @@ class ListonicSkill(MycroftSkill):
         item_name = message.data.get('AddItem')
         list_name = message.data.get('ListName')
         self.log.info(message.utterance_remainder())
-
-        # if item_name is None:
-        #     self.speak_dialog("no item given to add to list")
-        #     return
-        # if list_name is None:
-        #     self.speak_dialog("no list given to add item")
-        #     return
+        self.log.info(list_name)
 
         if self.settings.get('list_1_name') is not None \
                 and list_name == self.settings.get('list_1_name').lower():
