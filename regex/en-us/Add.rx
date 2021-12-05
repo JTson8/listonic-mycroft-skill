@@ -1,0 +1,4 @@
+add (?P<Item>.*) (to|in)
+place (?P<Item>.*) (to|in)
+put (?P<Item>.*) (to|in)
+insert (?P<Item>.*) (to|in)

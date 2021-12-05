@@ -18,6 +18,7 @@ import json
 
 import requests
 from mycroft import MycroftSkill, intent_handler
+from adapt.intent import IntentBuilder
 
 
 class ListonicSkill(MycroftSkill):
@@ -37,12 +38,10 @@ class ListonicSkill(MycroftSkill):
         settings will be available."""
         self.login()
 
-    @intent_handler('Listonic.intent')
+    @intent_handler(IntentBuilder("AddToList").require("Add").require("List").build())
     def handle_list_intent(self, message):
-        """ Skills can log useful information. These will appear in the CLI and
-        the skills.log file."""
         list_id = ""
-        list_name = message.data.get('list_name')
+        list_name = message.data.get('List')
         if self.settings.get('list_1_name') is not None \
                 and list_name == self.settings.get('list_1_name').lower():
             list_id = self.settings.get('list_1_id')
@@ -56,7 +55,7 @@ class ListonicSkill(MycroftSkill):
         if list_id is None or list_id == "":
             self.speak_dialog("no list found by that name")
         else:
-            self.handle_request(list_id, message.data.get('item'), list_name)
+            self.handle_request(list_id, message.data.get('Item'), list_name)
 
     def stop(self):
         pass
