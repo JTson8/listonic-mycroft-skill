@@ -1,0 +1,4 @@
+add (?P<Item>.*) (into|to|in)( the)? (?P<List>[^\s]+)( list)?
+place (?P<Item>.*) (into|to|in)( the)? (?P<List>[^\s]+)( list)?
+put (?P<Item>.*) (into|to|in)( the)? (?P<List>[^\s]+)( list)?
+insert (?P<Item>.*) (into|to|in)( the)? (?P<List>[^\s]+)( list)?

@@ -1,3 +1,0 @@
-to( the)? (?P<List>[^\s]+)( list)?
-in( the)? (?P<List>[^\s]+)( list)?
-into( the)? (?P<List>[^\s]+)( list)?
