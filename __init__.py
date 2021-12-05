@@ -43,8 +43,8 @@ class ListonicSkill(MycroftSkill):
         list_id = ""
         item_name = message.data.get('AddItem')
         list_name = message.data.get('ListName')
-        self.log.info(message.utterance_remainder())
-        self.log.info(list_name)
+        if list_name == "the":
+            list_name = message.utterance_remainder().split()[-1]
 
         if self.settings.get('list_1_name') is not None \
                 and list_name == self.settings.get('list_1_name').lower():
