@@ -72,11 +72,7 @@ class ListonicSkill(MycroftSkill):
     def handle_find_item_in_list_intent(self, message):
         list_id = ""
         item_name = message.data.get('FindItem')
-        self.log.info(item_name)
-        item_name = item_name.replace(" exists", "")
-        self.log.info(item_name)
-        item_name = item_name.replace(" already", "")
-        self.log.info(item_name)
+        item_name = item_name.replace(" exist", "").replace(" already", "")
         list_name = message.data.get('ListNameFind')
         if list_name == "the":
             list_name = message.utterance_remainder().split()[-1]
