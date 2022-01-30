@@ -41,7 +41,7 @@ class ListonicSkill(MycroftSkill):
         self.login()
 
     @intent_handler(IntentBuilder("AddToList").require("Add").require("Seperator").require("AddItem").require("ListName").build())
-    def handle_list_intent(self, message):
+    def handle_add_list_intent(self, message):
         list_id = ""
         item_name = message.data.get('AddItem')
         list_name = message.data.get('ListName')
@@ -69,7 +69,7 @@ class ListonicSkill(MycroftSkill):
 
     @intent_handler(
         IntentBuilder("FindItemInList").require("Find").require("Seperator").require("FindItem").require("ListName").build())
-    def handle_list_intent(self, message):
+    def handle_find_item_in_list_intent(self, message):
         list_id = ""
         item_name = message.data.get('FindItem')
         list_name = message.data.get('ListName')
