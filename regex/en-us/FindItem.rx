@@ -1,1 +1,1 @@
-(.* ) (?P<AddItem>.*)( into| to| in| on)(.* )
+(.* )?(does|find|is|search) (?P<AddItem>.*)( into| to| in| on)(.* )
