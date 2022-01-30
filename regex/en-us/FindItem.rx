@@ -1,1 +1,1 @@
-(.* )?(does|find|is|search) (?P<FindItem>.*)( exist| in)(.* )
+(.* )?(does|find|is|search) (?P<FindItem>.*)( (already in)| (exist in)| in)(.* )

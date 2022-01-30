@@ -130,15 +130,13 @@ class ListonicSkill(MycroftSkill):
                 return self.get_item_from_list(list_id, item, list_name, True)
         elif r.status_code == 200:
             last_version = r.headers.get("x-last-version")
-            self.log.info(last_version)
             if last_version != self.cached_version:
                 data = r.json()
                 output_dict = [x for x in data if x['Deleted'] == 0]
                 self.cached_list = output_dict
                 self.cached_version = last_version
             for json_item in self.cached_list:
-                self.log.info(json_item)
-                if json_item.get("Name") == item:
+                if json_item.get("Name").lower() == item.lower():
                     return True
             return False
         else:
