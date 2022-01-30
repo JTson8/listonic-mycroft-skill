@@ -93,7 +93,7 @@ class ListonicSkill(MycroftSkill):
             if found_item:
                 self.speak_dialog(item_name + " was found in " + list_name)
             else:
-                self.speak_dialog(item_name + "does not exist in " + list_name)
+                self.speak_dialog(item_name + " does not exist in " + list_name)
 
     def stop(self):
         pass
@@ -136,9 +136,9 @@ class ListonicSkill(MycroftSkill):
                 output_dict = [x for x in data if x['Deleted'] == 0]
                 self.cached_list = output_dict
                 self.cached_version = last_version
-            self.log.info(self.cached_list)
             for json_item in self.cached_list:
-                if json_item.get("name") == item:
+                self.log.info(json_item)
+                if json_item.get("Name") == item:
                     return True
             return False
         else:
