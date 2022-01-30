@@ -40,11 +40,11 @@ class ListonicSkill(MycroftSkill):
         settings will be available."""
         self.login()
 
-    @intent_handler(IntentBuilder("AddToList").require("Add").require("Seperator").require("AddItem").require("ListName").build())
+    @intent_handler(IntentBuilder("AddToList").require("Add").require("AddSeperator").require("AddItem").require("ListNameAdd").build())
     def handle_add_list_intent(self, message):
         list_id = ""
         item_name = message.data.get('AddItem')
-        list_name = message.data.get('ListName')
+        list_name = message.data.get('ListNameAdd')
         if list_name == "the":
             list_name = message.utterance_remainder().split()[-1]
 
@@ -68,11 +68,11 @@ class ListonicSkill(MycroftSkill):
                 self.speak_dialog(item_name + " already exists in " + list_name)
 
     @intent_handler(
-        IntentBuilder("FindItemInList").require("Find").require("Seperator").require("FindItem").require("ListName").build())
+        IntentBuilder("FindItemInList").require("Find").require("FindSeperator").require("FindItem").require("ListNameFind").build())
     def handle_find_item_in_list_intent(self, message):
         list_id = ""
         item_name = message.data.get('FindItem')
-        list_name = message.data.get('ListName')
+        list_name = message.data.get('ListNameFind')
         if list_name == "the":
             list_name = message.utterance_remainder().split()[-1]
 
@@ -130,11 +130,13 @@ class ListonicSkill(MycroftSkill):
                 return self.get_item_from_list(list_id, item, list_name, True)
         elif r.status_code == 200:
             last_version = r.headers.get("x-last-version")
+            self.log.info(last_version)
             if last_version != self.cached_version:
                 data = r.json()
                 output_dict = [x for x in data if x['Deleted'] == 0]
                 self.cached_list = output_dict
                 self.cached_version = last_version
+            self.log.info(self.cached_list)
             for json_item in self.cached_list:
                 if json_item.get("name") == item:
                     return True
