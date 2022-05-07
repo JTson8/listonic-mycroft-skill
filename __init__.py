@@ -67,6 +67,21 @@ class ListonicSkill(MycroftSkill):
             else:
                 self.speak_dialog(item_name + " already exists in " + list_name)
 
+    @intent_handler(IntentBuilder("WeNeedMore").require("NeedMore").require("WeNeedMoreAddItem").build())
+    def handle_need_more_intent(self, message):
+        list_id = self.settings.get('list_1_id')
+        item_name = message.data.get('NeedMoreAddItem')
+        list_name = self.settings.get('list_1_name')
+
+        if list_id is None or list_id == "":
+            self.speak_dialog("no list found")
+        else:
+            found_item = self.get_item_from_list(list_id, item_name, list_name)
+            if not found_item:
+                self.handle_add_request(list_id, item_name, list_name)
+            else:
+                self.speak_dialog(item_name + " already exists in Shopping List")
+
     @intent_handler(
         IntentBuilder("FindItemInList").require("Find").require("FindSeperator").require("FindItem").require("ListNameFind").build())
     def handle_find_item_in_list_intent(self, message):
