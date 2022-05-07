@@ -67,7 +67,7 @@ class ListonicSkill(MycroftSkill):
             else:
                 self.speak_dialog(item_name + " already exists in " + list_name)
 
-    @intent_handler(IntentBuilder("WeNeedMore").require("NeedMore").require("WeNeedMoreAddItem").build())
+    @intent_handler(IntentBuilder("WeNeedMore").require("Need").require("NeedMoreAddItem").build())
     def handle_need_more_intent(self, message):
         list_id = self.settings.get('list_1_id')
         item_name = message.data.get('NeedMoreAddItem')
